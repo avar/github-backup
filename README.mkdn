@@ -40,3 +40,12 @@ as the `root` user do:
 And you're done, `github-backup` will run the equivalent of `sudo -u
 avar -H git config github.token` to grab the token for `avar` and
 backup all of his repositories.
+
+# Bugs
+
+Please report any to [the github-backup issue
+tracker](http://github.com/avar/github-backup/issues) on GitHub.
+
+# Author
+
+Ævar Arnfjörð Bjarmason <avarab@gmail.com>
