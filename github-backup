@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Back up Githup repositories for all users with Git::Megapull. The
+# canonical version is maintained at http://github.com/avar/github-backup
+
+# Source our configuration file
+. /etc/github-backup/github-backup.conf
+
+# Check configuration
+if [ -z $GITHUB_BACKUP_DIRECTORY ]; then
+    echo "You must set GITHUB_BACKUP_DIRECTORY in /etc/github-backup.conf to use github-backup"
+    exit 1
+fi
+
+if [ ! -d $GITHUB_BACKUP_DIRECTORY ]; then 
+    echo "The GITHUB_BACKUP_DIRECTORY directory you've set ($GITHUB_BACKUP_DIRECTORY) doesn't exist"
+    exit 1
+fi
+
+# Every directory under $GITHUB_BACKUP_DIRECTORY maps to a user on
+# this system. We'll run git-megapull as that user to read their
+# github.token in their ~/.gitconfig
+for user in $(find $GITHUB_BACKUP_DIRECTORY -maxdepth 1 -mindepth 1 -type d -printf "%f\n"); do
+    cd $GITHUB_BACKUP_DIRECTORY/$user
+    sudo -u $user -H git-megapull --bare --source Github > /dev/null
+done
+
+exit 0

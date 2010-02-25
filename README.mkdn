@@ -1,0 +1,8 @@
+# About
+
+`github-backup` is a simple shellscript that uses the Git::Megapull
+CPAN module to backup all the GitHub repositories of one or more Unix
+users on your system.
+
+
+
