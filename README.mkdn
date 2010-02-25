@@ -1,8 +1,42 @@
-# About
-
 `github-backup` is a simple shellscript that uses the Git::Megapull
 CPAN module to backup all the GitHub repositories of one or more Unix
 users on your system.
 
+# Installation
 
+## Installing github-backup
 
+To install this program arrange for it to be unpacked in your `/etc`,
+you can do this by simply checking it out from git:
+
+    cd /etc
+    sudo git clone git://github.com/avar/github-backup.git
+
+Or if your `/etc` itself is in git (as mine is) you can add it as a
+submodule:
+
+    cd /etc
+    sudo git submodule add git://github.com/avar/github-backup.git github-backup
+
+## Running it periodically
+
+To run `github-backup` periodically simply run it via `cron(8)`. On
+systems which have configured `/etc/cron.daily` directory simply do:
+
+    sudo ln -s /etc/github-backup/github-backup /etc/cron.daily/github-backup
+
+## User installation
+
+If you've just created a user `avar` on your system and want to back
+up his GitHub repositories you should first. set the [GitHub
+token](http://help.github.com/git-email-settings/) for that user, then
+as the `root` user do:
+
+    # . /etc/github-backup/github-backup.conf
+    # cd $GITHUB_BACKUP_DIRECTORY
+    # mkdir avar
+    # chown avar avar
+
+And you're done, `github-backup` will run the equivalent of `sudo -u
+avar -H git config github.token` to grab the token for `avar` and
+backup all of his repositories.
