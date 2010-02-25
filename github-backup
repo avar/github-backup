@@ -28,7 +28,13 @@ fi
 # github.token in their ~/.gitconfig
 for user in $(find $GITHUB_BACKUP_DIRECTORY -maxdepth 1 -mindepth 1 -type d -printf "%f\n"); do
     cd $GITHUB_BACKUP_DIRECTORY/$user
-    sudo -u $user -H git-megapull --bare --source Github > /dev/null
+
+    # Redirect STDERR because git fetch prints non-error output to STDERR
+    sudo -u $user -H git-megapull --bare --source Github > /dev/null 2>&1
+
+    if [ $? -ne 0 ]; then
+        echo "Failed to run git-megapull for user $user, failed with exit code $?"
+    fi
 done
 
 exit 0
