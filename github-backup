@@ -6,6 +6,12 @@
 # Source our configuration file
 . /etc/github-backup/github-backup.conf
 
+# Check prerequisites
+if [ -z $(which git-megapull) ]; then
+    echo "You don't have git-megapull installed. Install it as documented at http://github.com/avar/github-backup"
+    exit 1
+fi
+
 # Check configuration
 if [ -z $GITHUB_BACKUP_DIRECTORY ]; then
     echo "You must set GITHUB_BACKUP_DIRECTORY in /etc/github-backup.conf to use github-backup"
