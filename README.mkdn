@@ -4,6 +4,23 @@ users on your system.
 
 # Installation
 
+## Installing Git::Megapull
+
+This backup script depends on the Git::Megapull CPAN module to do its
+work. To install it simply do:
+
+    sudo cpan -i Git::Megapull
+
+This will install Git::Megapull and its dependencies on your system.
+
+You then have to apply some patches I've made to Git::Megapull due to
+bugs upstream. To do this simply:
+
+    git clone git://github.com/avar/git-megapull.git
+    cd git-megapull
+    perl Makefile.PL
+    sudo make test install
+
 ## Installing github-backup
 
 To install this program arrange for it to be unpacked in your `/etc`,
