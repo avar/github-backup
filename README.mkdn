@@ -18,8 +18,8 @@ bugs upstream. To do this simply:
 
     git clone git://github.com/avar/git-megapull.git
     cd git-megapull
-    perl Makefile.PL
-    sudo make test install
+    dzil build
+    cpanm Git-Megapull*.tar.gz
 
 ## Installing github-backup
 
