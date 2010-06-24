@@ -1,30 +1,21 @@
-`github-backup` is a simple shellscript that uses the Git::Megapull
-CPAN module to backup all the GitHub repositories of one or more Unix
-users on your system.
+`github-backup` is a simple shellscript that uses the
+[Git::Megapull](http://search.cpan.org/perldoc?Git::Megapull) CPAN
+module to backup all the GitHub repositories of one or more Unix users
+on your system.
 
 # Installation
 
 ## Installing Git::Megapull
 
-This backup script depends on the Git::Megapull CPAN module to do its
-work. To install it simply do:
+This backup script depends on the Git::Megapull CPAN module (version
+0.101750 or later) to do its work. To install it do:
 
-    sudo cpan -i Git::Megapull
-
-This will install Git::Megapull and its dependencies on your system.
-
-You then have to apply some patches I've made to Git::Megapull due to
-bugs upstream. To do this simply:
-
-    git clone git://github.com/avar/git-megapull.git
-    cd git-megapull
-    dzil build
-    cpanm Git-Megapull*.tar.gz
+    cpanm -S Git::Megapull
 
 ## Installing github-backup
 
 To install this program arrange for it to be unpacked in your `/etc`,
-you can do this by simply checking it out from git:
+you can do this by checking it out from git:
 
     cd /etc
     sudo git clone git://github.com/avar/github-backup.git
