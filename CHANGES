@@ -1,3 +1,12 @@
+1.01 Thu Jun 24 20:42:30 UTC 2010
+
+    - Use $(which git-megapull) not git-megapull. This runs the
+      git-megapull script from the environment of the user that's
+      running the cron script, not the user that's beind sudoed to.
+
+    - We can now use Git::Megapull from upstream since my patches got
+      integrated.
+
 1.00 Thu Feb 25 23:53:36 GMT 2010
 
     - Initial working release pushed to GitHub
